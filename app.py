@@ -32,12 +32,12 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 # this is our model (aka table)
-class DBTable(db.Model):
+class MaternityLeave(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    column_1 = db.Column(db.String(255), nullable=False)
-    column_2 = db.Column(db.Text, nullable=False)
-    #column_3 = db.Column(db.DateTime, nullable=False)
-    #column_4 = db.Column(db.Float, nullable=False)
+    Country = db.Column(db.String(255), nullable=False)
+    Weeks_Paid = db.Column(db.Float, nullable=False)
+    Payment_Rate = db.Column(db.Float, nullable=False)
+    Population_2020 = db.Column(db.Text, nullable=False)
     #column_5 = db.Column(db.Boolean, nullable=False)
     
 #
@@ -68,23 +68,23 @@ def other():
 # change this to return your data
 @app.route('/api', methods=['GET'])
 def get_data():
-    table = DBTable.query.all()
-    d = {row.column_1:row.column_2 for row in table}
-    return jsonify(d)
+    table = MaternityLeave.query.all()
+#     d = {row.column_1:row.column_2 for row in table}
+#     return jsonify(d)
 
-# change this to allow users to add/update data
-@app.route('/api', methods=['POST'])
-def add_data():
-    for k,v in request.args.items():
-        pass
-    return jsonify({})
+# # change this to allow users to add/update data
+# @app.route('/api', methods=['POST'])
+# def add_data():
+#     for k,v in request.args.items():
+#         pass
+#     return jsonify({})
         
-# change this to allow the deletion of data
-@app.route('/api', methods=['DELETE'])
-def delete_data():
-    for k,v in request.args.items():
-        pass
-    return jsonify({})
+# # change this to allow the deletion of data
+# @app.route('/api', methods=['DELETE'])
+# def delete_data():
+#     for k,v in request.args.items():
+#         pass
+#     return jsonify({})
 
 #
 # CODE TO BE EXECUTED WHEN RAN AS SCRIPT
