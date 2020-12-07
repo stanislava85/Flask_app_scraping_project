@@ -2,4 +2,12 @@
 
 {% block body %}
 
+<table>
+    {% for row in data %}
+    <tr>
+        <td> {{row.weeks_paid}}  {{ row.payment_rate}} </td>
+    </tr>
+    {% endfor %}
+</table> 
+
 {% endblock %}
