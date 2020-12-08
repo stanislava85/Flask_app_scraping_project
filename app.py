@@ -17,10 +17,10 @@ db = SQLAlchemy(app)
 class MaternityLeave(db.Model):
     __tablename__ = "Maternity Leave By Country"
     id = db.Column(db.Integer, primary_key=True)
-    country = db.Column(db.String(255), nullable=True)
-    weeks_paid = db.Column(db.Float, nullable=True)
-    payment_rate = db.Column(db.Float, nullable=True)
-    population_2020 = db.Column(db.Integer, nullable=True)
+    country = db.Column(db.String(255), nullable=False)
+    weeks_paid = db.Column(db.Float, nullable=False)
+    payment_rate = db.Column(db.Float, nullable=False)
+    population_2020 = db.Column(db.Integer, nullable=False)
     
 #     def __repr__(self):
 #         return f"{self.id} {self.country} {self.weeks_paid} {self.payment_rate} {self.population_2020}"
