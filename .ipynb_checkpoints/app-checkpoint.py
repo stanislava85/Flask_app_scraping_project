@@ -22,23 +22,11 @@ class MaternityLeave(db.Model):
     payment_rate = db.Column(db.Float, nullable=False)
     population_2020 = db.Column(db.Integer, nullable=False)
     
-#     def __repr__(self):
-#         return f"{self.id} {self.country} {self.weeks_paid} {self.payment_rate} {self.population_2020}"
-    
-#
-# VIEWS 
-#
 
-# set up your index view to show your "home" page
-# it should include:
-# links to any pages you have
-# information about your data
-# information about how to access your data
-# you can choose to output data on this page
 @app.route('/', methods=['GET'])
 def index():
-    data = MaternityLeave.query.all()
-    return render_template('index.html', data=data)
+    table = MaternityLeave.query.all()
+    return render_template('index.html', data=table)
 
 # include other views that return html here:
 @app.route('/other')
@@ -49,29 +37,45 @@ def other():
 # GET requests to get your data in json
 # POST requests to store/update some data
 # DELETE requests to delete some data
-
-# change this to return your data
 @app.route('/api', methods=['GET'])
 def get_data():
     table = MaternityLeave.query.all()
-    d = {row.id:row.country for row in table}
+    d=[]
+    for row in table:
+        row_as_dict = {
+            #should I include row.id?
+            "country": row.country,
+            "weeks paid": row.weeks_paid,
+            "payment rate": row.payment_rate,
+            "population 2020": row.population_2020,
+        }
+        d.append(row_as_dict)
     return jsonify(d)
 
-# # change this to allow users to add/update data
+#this will allow users to add/update data
 @app.route('/api', methods=['POST'])
 def add_data():
-    if request.method == 'POST':
-        print(request.form)
-        for k,v in request.args.items():
-            print(k,v)
-        return jsonify({})
+    #added = {}
+    for k,v in request.args.items():
+        if not k in d.keys():
+            d[k] = v
+    return jsonify({"added": request.args, "current": d})
+#     if request.method == 'POST':
+#         print(request.form)
+#         for k,v in request.args.items():
+#             print(k,v)
+#         return jsonify({})
         
-# # change this to allow the deletion of data
+#this will allow the deletion of data
 @app.route('/api', methods=['DELETE'])
 def delete_data():
     for k,v in request.args.items():
-        pass
-    return jsonify({})
+        try:
+            d.pop(k)
+            deleted[k] = v
+        except:
+            continue
+    return jsonify({"deleted": deleted, "current": d})
 
 
 

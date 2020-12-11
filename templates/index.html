@@ -5,7 +5,11 @@
 <table>
     {% for row in data %}
     <tr>
-        <td> {{row.country}}  {{ row.weeks_paid}} </td>
+       <td><h1> {{row.id}} : {{row.country}}</h1>  
+           <p>Weeks Paid: {{ row.weeks_paid}}</p>  
+           <p>Payment Rate: {{row.payment_rate}}</p>  
+           <p>Population 2020: {{row.population_2020}}</p> 
+        </td>
     </tr>
     {% endfor %}
 </table> 
