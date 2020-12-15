@@ -1,11 +1,42 @@
-  
 <!doctype html>
 <html>
   <head>
-    <title></title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" media="screen"/>
+    <title>Maternity Leave by Country 2020</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css" media="screen"/>
   </head>
-  <body>
+<body>
+	<div class="banner">
+ 		<div class="title">
+ 			<h1>Capstone Project @ The TKH 2020 Innovation Fellowship (Phase 1) </h1>
+ 		</div>	
+	</div>
+	<div class="about-me">
+ 		<div class="about-me-text">
+ 			<h2>About This Project</h2>
+ 			<p>I have scraped <a href="https://worldpopulationreview.com/country-rankings/maternity-leave-by-country">this website</a> presenting data on Maternity Leave by country and comparing the results. </p>
+         </div>
+    </div>
+            <div class="nav">
+ 			<ul>
+ 				<li><a href="/index">Scraped Data</a></li>
+ 				<li><a href="/table">Table of Results</a></li>
+                <li><a href="/api">List of Results</a></li>
+
+ 			</ul>	
+ 		</div>
+        			
+ 			<div class="social-media">
+                <h3>Connect with me on social media:</h3>
+ 				<ul>
+ 					<li><a href="https://www.linkedin.com/in/stanislava-hristova/">LinkedIn</a></li>
+ 					<li><a href="https://github.com/stanislava85">Github</a></li>
+ 				</ul>
+ 			</div>		
+
+      <div class="footer">
+          <p>Copyright Stanislava Hristova</p>
+      </div>
+    <table>
     {% block body %}{% endblock %}
-  </body>
+    </table>
 </html>

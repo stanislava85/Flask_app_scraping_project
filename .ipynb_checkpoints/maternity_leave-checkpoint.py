@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 
 def mat_leave(url):
     response = requests.get(url)
-    soup = BeautifulSoup(response.text, features="lxml")
+    soup = BeautifulSoup(response.text)
     table = soup.find("table") 
     rows = table.find_all('tr')
     th_td_list = []

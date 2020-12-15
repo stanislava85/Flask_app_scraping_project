@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Table Preview of Results</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css" media="screen"/>
+</head>
+<body>
+<style>
+ 
+ td {
+        width: 200px;
+        text-align: center;
+        border: 2px solid black;
+        padding: 8px;
+      }
+</style>
+    <div class = "table">
+<table>
+    <tr>
+        <td><b>Country</b></td>
+        <td><b>Weeks Paid</b></td>
+        <td><b>Payment Rate</b></td>
+        <td><b>Population 2020</b></td>
+        </tr>
+    
+    {% for row in data %}
+            <tr>
+            <td>{{ row.country }}</td>
+            <td>{{ row.weeks_paid }}</td>
+            <td>{{ row.payment_rate }}</td>
+            <td>{{ row.population_2020 }}</td>   
+            </tr>
+    {% endfor %}
+        
+    
+</table> 
+    </div>
+</body>
+</html>

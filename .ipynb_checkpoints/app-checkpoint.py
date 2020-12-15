@@ -21,22 +21,21 @@ class MaternityLeave(db.Model):
     weeks_paid = db.Column(db.Float, nullable=False)
     payment_rate = db.Column(db.Float, nullable=False)
     population_2020 = db.Column(db.Integer, nullable=False)
-    
 
 @app.route('/', methods=['GET'])
+def home():
+    return render_template('base.html')
+
+@app.route('/index', methods=['GET'])
 def index():
     table = MaternityLeave.query.all()
     return render_template('index.html', data=table)
 
-# include other views that return html here:
-@app.route('/other')
+@app.route('/table', methods=['GET'])
 def other():
-    return render_template('other.html')
+    data = MaternityLeave.query.all()
+    return render_template('table.html', data=data)
 
-# set up the following views to allow users to make
-# GET requests to get your data in json
-# POST requests to store/update some data
-# DELETE requests to delete some data
 @app.route('/api', methods=['GET'])
 def get_data():
     table = MaternityLeave.query.all()
@@ -55,16 +54,11 @@ def get_data():
 #this will allow users to add/update data
 @app.route('/api', methods=['POST'])
 def add_data():
-    #added = {}
-    for k,v in request.args.items():
-        if not k in d.keys():
-            d[k] = v
-    return jsonify({"added": request.args, "current": d})
-#     if request.method == 'POST':
-#         print(request.form)
-#         for k,v in request.args.items():
-#             print(k,v)
-#         return jsonify({})
+    if request.method == "POST":
+        print(request.form)
+        for k,v in request.args.items():
+            print(k,v)
+        return jsonify({})
         
 #this will allow the deletion of data
 @app.route('/api', methods=['DELETE'])
