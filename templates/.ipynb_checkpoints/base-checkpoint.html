@@ -13,14 +13,14 @@
 	<div class="about-me">
  		<div class="about-me-text">
  			<h2>About This Project</h2>
- 			<p>I have scraped <a href="https://worldpopulationreview.com/country-rankings/maternity-leave-by-country">this website</a> presenting data on Maternity Leave by country and comparing the results. </p>
+ 			<p>I have scraped data from <a href="https://worldpopulationreview.com/country-rankings/maternity-leave-by-country">this website</a> comparing stats on Maternity Leave by country for 2020. My scraping script targeted the data in the table on the website and cleaned it up to extract the specific information needed. I automated the process of storing the extracted data into my database. At last, I created a Flask Application that made my database accessible from the web, created app routes for 3 different views of my database, and deployed it on Heroku.</p>
          </div>
     </div>
-            <div class="nav">
+            <div class="nav"><h3>Views:</h3>
  			<ul>
  				<li><a href="/index">Scraped Data</a></li>
  				<li><a href="/table">Table of Results</a></li>
-                <li><a href="/api">List of Results</a></li>
+                <li><a href="/api">API/JSON</a></li>
 
  			</ul>	
  		</div>
@@ -34,7 +34,7 @@
  			</div>		
 
       <div class="footer">
-          <p>Copyright Stanislava Hristova</p>
+          <p>Copyright Stanislava Hristova 2020</p>
       </div>
     <table>
     {% block body %}{% endblock %}

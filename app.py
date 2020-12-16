@@ -42,7 +42,6 @@ def get_data():
     d=[]
     for row in table:
         row_as_dict = {
-            #should I include row.id?
             "country": row.country,
             "weeks paid": row.weeks_paid,
             "payment rate": row.payment_rate,
